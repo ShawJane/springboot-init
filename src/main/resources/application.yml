@@ -9,7 +9,7 @@ server:
         max-age: 2592000
 spring:
   application:
-    name: springboot-singlev2
+    name: springboot-init-single
   # 默认 dev 环境
   profiles:
     active: dev
@@ -68,7 +68,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mappers/*xml
   #指定Mybatis的实体目录
-  type-aliases-package: com.wsj.singlev2.mybatis.entity
+  type-aliases-package: com.wsj.springbootinit.mybatis.entity
 mybatis-plus:
   configuration:
     # 禁用下划线转驼峰
@@ -106,3 +106,7 @@ cos:
     secretKey: xxx
     region: xxx
     bucket: xxx
+
+# SMMS对象存储
+smms:
+  token: xxxxxxxxxxxxxxxxxxxxx

@@ -46,4 +46,4 @@ knife4j:
         group-name: test1
         api-rule: package
         api-rule-resources:
-          - com.wsj.singlev2.controller
+          - com.wsj.springbootinit.controller
