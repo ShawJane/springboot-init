@@ -1,0 +1,108 @@
+server:
+  address: 0.0.0.0
+  port: 7101
+  servlet:
+    context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
+spring:
+  application:
+    name: springboot-singlev2
+  # 默认 dev 环境
+  profiles:
+    active: dev
+  # 支持 swagger3
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  # session 配置
+  session:
+    # 开启分布式 session（须先配置 Redis）
+    store-type: redis
+    # 30 天过期
+    timeout: 2592000
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/project_demo
+    username: root
+    password: 123456
+  # Redis 配置
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    timeout: 5000
+    password: 123456
+# Elasticsearch 配置
+#  elasticsearch:
+#    uris: http://localhost:9200
+#    username: root
+#    password: 123456
+  # 文件上传
+  servlet:
+    multipart:
+      # 大小限制
+      max-file-size: 5MB
+#  freemarker:
+#    # 指定是否要启用缓存
+#    cache: false
+#    # 指定字符集
+#    charset: utf-8
+#    #指定是否要暴露请求和会话属性
+#    expose-request-attributes: true
+#    expose-session-attributes: true
+#    # spring 静态资源扫描路径
+#    #指定freemarker的模板路径和模板的后缀
+#    suffix: .ftl
+#    template-loader-path: classpath:/webapp/
+  # 应用服务 WEB 访问端口
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+#下面这些内容是为了让MyBatis映射
+#指定Mybatis的Mapper文件
+mybatis:
+  mapper-locations: classpath:mappers/*xml
+  #指定Mybatis的实体目录
+  type-aliases-package: com.wsj.singlev2.mybatis.entity
+mybatis-plus:
+  configuration:
+    # 禁用下划线转驼峰
+    map-underscore-to-camel-case: false
+#    # 日志输出
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+
+# 微信相关
+wx:
+  # 微信公众平台
+  # https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Authorized_Interface_Calling_UnionID.html
+  mp:
+    token: xxx
+    aesKey: xxx
+    appId: xxx
+    secret: xxx
+    config-storage:
+      http-client-type: HttpClient
+      key-prefix: wx
+      redis:
+        host: 127.0.0.1
+        port: 6379
+        password: 123456
+      type: Memory
+# 对象存储
+# https://github.com/tencentyun/cos-java-sdk-v5
+cos:
+  client:
+    accessKey: xxx
+    secretKey: xxx
+    region: xxx
+    bucket: xxx

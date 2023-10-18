@@ -1,0 +1,49 @@
+# 测试配置文件
+server:
+  port: 7103
+spring:
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.50.129:3306/project_demo
+    username: root
+    password: 123456
+  # Redis 配置
+  redis:
+    database: 1
+    host: 192.168.50.129
+    port: 6379
+    timeout: 5000
+    password: 123456
+  # Elasticsearch 配置
+#  elasticsearch:
+#    uris: http://192.168.50.129:9200
+#    username: root
+#    password: 123456
+# 微信相关
+wx:
+  mp:
+    config-storage:
+      redis:
+        host: 192.168.50.129
+        port: 6379
+        password: 123456
+
+knife4j:
+  enable: true
+  openapi:
+    title: Knife4j - SpringBoot Init Single V2.0
+    description: "**springboot项目初始化（单模块）** - 接口文档"
+    email: 1935496654@qq.com
+    concat: Vincent Nicky
+    url: https://docs.xiaominfo.com
+    version: v4.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      test1:
+        group-name: test1
+        api-rule: package
+        api-rule-resources:
+          - com.wsj.singlev2.controller
